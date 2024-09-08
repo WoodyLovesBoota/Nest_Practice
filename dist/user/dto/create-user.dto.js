@@ -9,21 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateMovieDto = void 0;
+exports.CreateUserDto = void 0;
 const class_validator_1 = require("class-validator");
-class CreateMovieDto {
+class CreateUserDto {
 }
-exports.CreateMovieDto = CreateMovieDto;
+exports.CreateUserDto = CreateUserDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateMovieDto.prototype, "title", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    __metadata("design:type", Number)
-], CreateMovieDto.prototype, "year", void 0);
-__decorate([
-    (0, class_validator_1.IsString)({ each: true }),
-    __metadata("design:type", Array)
-], CreateMovieDto.prototype, "genres", void 0);
-//# sourceMappingURL=create-movie.dto.js.map
+], CreateUserDto.prototype, "name", void 0);
+//# sourceMappingURL=create-user.dto.js.map
