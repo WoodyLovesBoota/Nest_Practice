@@ -1,4 +1,14 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Put,
+  Query,
+} from "@nestjs/common";
 import { BookService } from "./book.service";
 import { Book } from "./entities/book.entity";
 import { CreateBookDto } from "./dto/create-book.dto";
@@ -12,23 +22,23 @@ export class BookController {
     return await this.bookService.getBooks(uid);
   }
 
+  @Post("/add")
+  addBook(@Body() data: { bookInfo: CreateBookDto; uid: string }) {
+    return this.bookService.addBook(data);
+  }
+
+  @Post("/delete")
+  remove(@Body() data: { isbn: string; uid: string }) {
+    return this.bookService.deleteBook(data);
+  }
+
   // @Get("/:uid")
   // getOne(@Param("uid") uid: number): Promise<User> {
   //   return this.userService.getOne(uid);
   // }
 
-  // @Post()
-  // create(@Body() userData: CreateUserDto) {
-  //   return this.userService.create(userData);
-  // }
-
-  // @Delete("/:uid")
-  // remove(@Param("uid") uid: string) {
-  //   return this.userService.deleteOne(uid);
-  // }
-
-  // @Put("/:uid")
-  // update(@Param("uid") uid: string, @Body() userData: CreateUserDto) {
-  //   return this.userService.update(uid, userData);
-  // }
+  @Post("/update")
+  update(@Body() data: { bookInfo: CreateBookDto; uid: string; isbn: string }) {
+    return this.bookService.updateBook(data);
+  }
 }
