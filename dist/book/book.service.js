@@ -6,20 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.BookService = void 0;
 const common_1 = require("@nestjs/common");
-const user_controller_1 = require("./user/user.controller");
-const user_service_1 = require("./user/user.service");
-const book_service_1 = require("./book/book.service");
-const book_controller_1 = require("./book/book.controller");
-let AppModule = class AppModule {
+const firestore_1 = require("firebase/firestore");
+const firebase_config_1 = require("../firebase/firebase.config");
+let BookService = class BookService {
+    async getBooks(uid) {
+        const docRef = await (0, firestore_1.getDoc)((0, firestore_1.doc)(firebase_config_1.db, "Book", "BOOK"));
+        return docRef.data()[uid]["book"];
+    }
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
-    (0, common_1.Module)({
-        imports: [],
-        controllers: [user_controller_1.MoviesController, book_controller_1.BookController],
-        providers: [user_service_1.UserService, book_service_1.BookService],
-    })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+exports.BookService = BookService;
+exports.BookService = BookService = __decorate([
+    (0, common_1.Injectable)()
+], BookService);
+//# sourceMappingURL=book.service.js.map
